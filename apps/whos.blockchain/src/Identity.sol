@@ -28,7 +28,6 @@ contract Identity {
     }
 
     function registerUser() {}
-
     function getUser() {}
     function hasPermission(){}
     function deactivateUser() {}
