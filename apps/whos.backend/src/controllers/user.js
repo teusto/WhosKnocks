@@ -1,6 +1,8 @@
-const { exec } = require('child_process');
+const snarkjs = require("snarkjs");
 const contract = require('../utils/contract');
 const ethers = require('ethers');
+
+const verificationKey = require("../circuits/verification_key.json");
 
 exports.registerUser = async (req, res) => {
     try {
@@ -29,9 +31,46 @@ exports.getUser = async (req, res) => {
 
 exports.generateProof = async (req, res) => {
     try {
-        
+        const { userRoleHash, targetRoleHash } = req.body;
+
+        // Path to the generated wasm and zkey files
+        const wasmPath = path.join(__dirname, "../");
+        const zkeyPath = path.join(__dirname, "../circuits/role_verification_final.zkey");
+
+        // Generate witness file
+        const input = {
+            userRoleHash,
+            targetRoleHash
+        };
+
+        // Run witness generation
+        const witness = await snarkjs.wtns.calculate(input, wasmPath);
+
+        // Generate proof
+        const proofData = await snarkjs.groth16.prove(zkeyPath, witness);
+        const { proof, publicSignals } = proofData;
+
+        res.json({
+            proof,
+            publicSignals
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error generating proof', error });
+    }
+}
+
+exports.verifyProof = async (req, res) => {
+    try {
+        const { proof, publicSignals } = req.body;
+
+        const isValid = await snarkjs.groth16.verify(verificationKey, publicSignals, proof);
+
+        res.json({
+            valid: isValid
+        });
+    } catch (error) {
+        console.error("Error verifying proof:", error);
+        res.status(500).json({ message: "Error verifying proof:", error });
     }
 }
