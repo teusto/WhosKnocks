@@ -29,3 +29,18 @@ build
 .vscode
 artifacts
 cache
+# ignore auto generated test circuits
+circuits/test
+ptau
+# circuit-specific powers of tau are ignored
+*.ptau 
+# universal ptaus not ignored
+!ptau/*
+# temporary ptaus are ignored
+tmp.ptau
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
