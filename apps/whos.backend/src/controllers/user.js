@@ -34,8 +34,8 @@ exports.generateProof = async (req, res) => {
         const { userRoleHash, targetRoleHash } = req.body;
 
         // Path to the generated wasm and zkey files
-        const wasmPath = path.join(__dirname, "../");
-        const zkeyPath = path.join(__dirname, "../circuits/role_verification_final.zkey");
+        const wasmPath = path.join(__dirname, "../circuits/RoleVerification_js/RoleVerification.wasm");
+        const zkeyPath = path.join(__dirname, "../circuits/proving_key.zkey");
 
         // Generate witness file
         const input = {
