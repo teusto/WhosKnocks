@@ -1,31 +1,54 @@
-= SPEC-001: Blockchain-Based Identity and Access Card with Zero-Knowledge Proofs
-:sectnums:
+= Blockchain-based Identity and Access Control PWA with Zero-Knowledge Proofs
 :toc:
 
-== Background
+== Project Overview
 
-This project aims to create a digital identity and access card application, leveraging blockchain and zero-knowledge proof (ZKP) technologies to provide users with a secure and privacy-preserving method of identity verification and access management. The card serves not only as an identity verifier but also as a dynamic access control provider that can be trusted across organizations and services.
+This project is a Progressive Web App (PWA) built to demonstrate secure, privacy-focused identity verification and role-based access control using blockchain and zero-knowledge proofs (ZKPs). The solution provides an identity card with role-based access permissions that can be added to wallet apps (e.g., Apple Wallet) and includes a QR code for quick verification.
 
-The application will include a “smart business card” feature, enabling holders to share limited personal information such as their name, phone number, and calendar availability. The digital identity card will feature a QR code, compatible with wallet apps such as Apple Wallet, to simplify access and integration. Blockchain technology will ensure immutable and secure verification of identity attributes, while ZKPs will be used to verify permissions without revealing sensitive information.
+== Features
 
-== Requirements
+* **User Registration**: Users can register with a unique identity and role (e.g., Employee, Admin).
+* **Role-Based Access Control**: Different access levels are enforced based on user roles.
+* **Zero-Knowledge Proofs**: Privacy-preserving verification using ZKPs for access without exposing user details.
+* **QR Code Integration**: Each user has a unique QR code for identity verification.
+* **PWA for Cross-Platform Accessibility**: The app can be installed on both mobile and desktop devices.
+* **Blockchain Immutability**: Smart contracts deployed on the Ethereum blockchain ensure secure and verifiable identity management.
 
-=== Must-Have
+== Tech Stack
 
-* **Secure Identity Verification**: Implement blockchain-based identity management to ensure the integrity and immutability of user identities.
-* **Access Permission Levels**: Support both predefined roles (e.g., Admin, Employee, Visitor) and dynamic, attribute-based access control.
-* **Zero-Knowledge Proof for Privacy**: Use ZKP to validate user permissions and identity attributes without disclosing sensitive information.
-* **QR Code Integration**: Generate a QR code that can be stored in wallet apps like Apple Wallet, linking to the user’s identity and access permissions.
-* **Cross-Organization Compatibility**: Design the solution to support integration with multiple organizations or services as a trusted identity provider.
+=== Frontend (PWA)
+* **React with Vite**: Provides a fast, responsive, and modern development experience.
+* **TypeScript**: Ensures type safety and maintainable code.
+* **Mantine UI**: A component library with theming and responsive design for a professional UI.
+* **Cypress**: E2E testing to verify seamless user interactions across components.
+* **Vite PWA Plugin**: Adds PWA capabilities, including offline access and installability.
 
-=== Should-Have
+=== Backend
+* **Node.js & Express**: REST API to manage identity registration, role verification, and proof generation.
+* **Ethers.js**: Interacts with Ethereum smart contracts for secure identity verification.
+* **Circom & SnarkJS**: Generates and verifies zero-knowledge proofs, enabling role-based access control without revealing user data.
+* **Jest**: Used for testing API endpoints and smart contract functions.
 
-* **User Information Sharing**: Include personal data fields such as name, phone number, and calendar availability for business card purposes.
-* **Revocation Mechanism**: Provide a way to revoke or update permissions and identity details if necessary, such as when a user’s role changes.
+=== Smart Contracts
+* **Foundry & Solidity**: Foundry is used to build and test smart contracts that manage identities, roles, and permissions on the Ethereum blockchain.
+* **Anvil**: A local Ethereum node provided by Foundry for fast smart contract testing.
 
-=== Could-Have
+== Project Structure
 
-* **Multi-Signature Verification**: Allow multi-signature-based approvals for certain high-level access permissions.
-* **Analytics on Access Patterns**: Gather anonymized access statistics for insights on usage trends across different organizations.
+* `apps/frontend`: Contains the React PWA with components, pages, and API service integration.
+* `apps/backend`: Contains the Node.js backend with API endpoints for identity registration, access verification, and ZKP handling.
+* `packages/smart-contracts`: Foundry-based smart contracts written in Solidity, managing user identities and roles.
 
----
+== Future Improvements
+
+* **Multi-signature Verification**: Enable multi-signature access approvals for enhanced security.
+* **Revocation Mechanism**: Add role and permission revocation for dynamic access management.
+* **Analytics Dashboard**: Implement a dashboard to visualize user access patterns.
+
+== License
+
+This project is licensed under the MIT License. See `LICENSE` for more information.
+
+== Acknowledgments
+
+This project was built as a demonstration of blockchain-based identity management and privacy-preserving access control using zero-knowledge proofs. Special thanks to the open-source communities behind Foundry, Circom, Vite, and Mantine for their powerful tools and libraries.
