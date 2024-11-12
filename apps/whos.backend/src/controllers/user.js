@@ -9,6 +9,7 @@ exports.registerUser = async (req, res) => {
         const { name, role } = req.body;
         const nameHash = ethers.utils.formatBytes32String(name);
         const roleHash = ethers.utils.formatBytes32String(role);
+        const tenant_id = req.tenant_id; // Retrieved from middleware
 
         const tx = await contract.registerUser(nameHash, roleHash);
         await tx.wait();
@@ -22,6 +23,7 @@ exports.registerUser = async (req, res) => {
 
 exports.getUser = async (req, res) => {
     try {
+        const tenant_id = req.tenant_id; // Retrieved from middleware
         
     } catch (error) {
         console.log(error);
