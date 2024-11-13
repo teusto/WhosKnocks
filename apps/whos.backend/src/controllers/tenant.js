@@ -36,7 +36,7 @@ exports.registerTenant = async (req, res) => {
 // Onboard a tenant (e.g., initial user setup, configurations)
 exports.onboardTenant = async (req, res) => {
     const { tenantId } = req.params;
-    const { initial_users } = req.body; // Array of initial users
+    const { initial_users, roles, permissions } = req.body; // Array of initial users
 
     try {
         for (const user of initial_users) {
@@ -44,6 +44,21 @@ exports.onboardTenant = async (req, res) => {
             await db.query(
                 'INSERT INTO users (email, password, role, tenant_id) VALUES ($1, $2, $3, $4)',
                 [user.email, hashedPassword, user.role, tenantId]
+            );
+        }
+
+        // Set up default roles and permissions if needed
+        for (const role of roles) {
+            await db.query(
+                'INSERT INTO roles (role_name, tenant_id) VALUES ($1, $2)',
+                [role.name, tenantId]
+            );
+        }
+
+        for (const permission of permissions) {
+            await db.query(
+                'INSERT INTO permissions (permission_name, role_id, tenant_id) VALUES ($1, $2, $3)',
+                [permission.name, permission.role_id, tenantId]
             );
         }
 
