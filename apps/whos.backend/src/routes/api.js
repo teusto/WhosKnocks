@@ -5,11 +5,11 @@ const authMiddleware = require('../middlewares/auth.middleware');
 const permissionMiddleware = require('../middlewares/permission.middleware');
 const router = express.Router();
 
-router.post('/api/user', userController.registerUser);
-router.get('/api/user/:userAddress', userController.getUser);
+router.post('/api/users', userController.registerUser);
+router.get('/api/users/:userAddress', userController.getUser);
 // ZKP routes
-router.post('/api/user/generate-proof', userController.generateProof);
-router.post('/api/user/verify-proof', userController.verifyProof);
+router.post('/api/users/generate-proof', userController.generateProof);
+router.post('/api/users/verify-proof', userController.verifyProof);
 
 // Register a new tenant (e.g., organization) and create an initial admin user
 router.post('/api/tenants', tenantController.registerTenant);
@@ -21,8 +21,8 @@ router.post('/api/tenants/:tenantId/onboard', tenantController.onboardTenant);
 router.post('/api/auth/login', authController.login);
 
 // Auth Middleware
-router.use('/api/user', authMiddleware);
-router.use('/api/user/generate-proof', authMiddleware);
-router.use('/api/user/verify-proof', authMiddleware);
+router.use('/api/users', authMiddleware);
+router.use('/api/users/generate-proof', authMiddleware);
+router.use('/api/users/verify-proof', authMiddleware);
 
 module.exports = router;
