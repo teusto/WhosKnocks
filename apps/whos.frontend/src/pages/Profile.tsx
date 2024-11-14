@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Text, Title } from '@mantine/core';
 import { getUser } from '../services/Api';
 import QRCodeComponent from '../components/QR';
+import UserPassCard from '../components/UserPassCard';
 import { useParams } from "react-router-dom";
 
 const ProfilePage: React.FC = () => {
@@ -28,6 +29,7 @@ const ProfilePage: React.FC = () => {
                     <Text>Name: {userInfo.name}</Text>
                     <Text>Role: {userInfo.role}</Text>
                     <QRCodeComponent value={userAddress as string} />
+                    <UserPassCard userInfo={userInfo} />
                 </>
             ) : (
                 <Text>Loading...</Text>

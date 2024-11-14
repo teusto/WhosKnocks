@@ -1,0 +1,12 @@
+[
+    {
+        "tenant_id": "tenant_123",
+        "tenant_name": "Tenant One",
+        "admin_email": "admin@example.com"
+    },
+    {
+        "tenant_id": "tenant_456",
+        "tenant_name": "Tenant Two",
+        "admin_email": "admin2@example.com"
+    }
+]

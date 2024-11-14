@@ -26,21 +26,21 @@ interface UserInfo {
 }
 
 export const registerUser = async (name: string, role: string): Promise<RegisterResponse> => {
-  const response = await api.post("user", { name, role });
+  const response = await api.post("/api/users", { name, role });
   return response.data;
 };
 
 export const getUser = async (userAddress: string): Promise<UserInfo> => {
-  const response = await api.get(`/user/${userAddress}`);
+  const response = await api.get(`/api/users/${userAddress}`);
   return response.data;
 };
 
 export const generateProof = async (userRoleHash: string, targetRoleHash: string): Promise<ProofResponse> => {
-    const response = await api.post("/user/generate-proof", { userRoleHash, targetRoleHash });
+    const response = await api.post("/api/users/generate-proof", { userRoleHash, targetRoleHash });
     return response.data;
 }
 
 export const verifyProof = async (proof: object, publicSignals: string[]): Promise<VerifyProofResponse> => {
-    const response = await api.post("/user/verify-proof", { proof, publicSignals });
+    const response = await api.post("/api/users/verify-proof", { proof, publicSignals });
     return response.data;
 }
