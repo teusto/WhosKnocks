@@ -3,7 +3,10 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import RegisterPage from "./pages/Register";
 import ProfilePage from "./pages/Profile";
 import AccessVerificationPage from "./pages/AccessVerification";
+// I WILL REMOVE BOTH OF THESE LATER
 import "@mantine/core/styles.css";
+import "@radix-ui/themes/styles.css";
+
 
 import { MantineProvider } from "@mantine/core";
 

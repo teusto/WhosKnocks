@@ -1,35 +1,73 @@
-import React, { useState } from 'react';
-import { TextInput, Button, Container, Title, Alert } from '@mantine/core';
-import { registerUser } from '../services/Api';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { registerUser } from "../services/Api";
+import { useNavigate } from "react-router-dom";
+import * as Form from "@radix-ui/react-form";
+import PageFrame from "../components/Page.frame";
 
 const RegisterPage: React.FC = () => {
-    const navigate = useNavigate();
-    const [name, setName] = useState<string>('');
-    const [role, setRole] = useState<string>('');
-    const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const [name, setName] = useState<string>("");
+  const [role, setRole] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
 
-    const handleRegister = async () => {
-        try {
-            const response = await registerUser(name, role);
-            alert('User registered successfully!');
-            navigate(`/profile/${response.userAddress}`);
-        } catch (error) {
-            setError('Registration failed. Try again.');
-        }
-    };
+  const handleRegister = async () => {
+    try {
+      const response = await registerUser(name, role);
+      alert("User registered successfully!");
+      navigate(`/profile/${response.userAddress}`);
+    } catch (error) {
+      setError("Registration failed. Try again.");
+    }
+  };
 
-    return (
-        <Container>
-            <Title>Register</Title>
-            {error && <Alert color="red">{error}</Alert>}
-            <TextInput label="Name" value={name} onChange={(e) => setName(e.target.value)} />
-            <TextInput label="Role" value={role} onChange={(e) => setRole(e.target.value)} />
-            <Button onClick={handleRegister} fullWidth mt="md">
-                Register
-            </Button>
-        </Container>
-    );
+  return (
+    <PageFrame>
+      <Form.Root className="FormRoot">
+        <Form.Field className="FormField" name="name">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+            }}
+          >
+            <Form.Label className="FormLabel">Email</Form.Label>
+            <Form.Message className="FormMessage" match="valueMissing">
+              Please enter your email
+            </Form.Message>
+            <Form.Message className="FormMessage" match="typeMismatch">
+              Please provide a valid email
+            </Form.Message>
+          </div>
+          <Form.Control asChild>
+            <input className="Input" type="email" required />
+          </Form.Control>
+        </Form.Field>
+        <Form.Field className="FormField" name="question">
+			<div
+				style={{
+					display: "flex",
+					alignItems: "baseline",
+					justifyContent: "space-between",
+				}}
+			>
+				<Form.Label className="FormLabel">Question</Form.Label>
+				<Form.Message className="FormMessage" match="valueMissing">
+					Please enter a question
+				</Form.Message>
+			</div>
+			<Form.Control asChild>
+				<textarea className="Textarea" required />
+			</Form.Control>
+		</Form.Field>
+		<Form.Submit asChild>
+			<button className="Button" style={{ marginTop: 10 }}>
+				Post question
+			</button>
+		</Form.Submit>
+      </Form.Root>
+    </PageFrame>
+  );
 };
 
 export default RegisterPage;
