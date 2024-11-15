@@ -35,7 +35,7 @@ const ProfilePage: React.FC = () => {
       ) : (
         <>
           <p>Loading...</p>
-          <UserPassCard userInfo={{ name: "John Doe", role: "User" }} />
+          <UserPassCard userInfo={{ holderName: "John Doe", role: "User" }} />
         </>
       )}
     </div>

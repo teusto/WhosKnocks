@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 
 // Start the MSW worker only in development
-if (import.meta.env.MODE === 'development') {
+if (import.meta.env.MODE === 'DEVELOPMENT') {
     import('./mocks/browser').then(({ worker }) => worker.start());
 }
 

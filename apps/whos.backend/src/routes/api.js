@@ -18,7 +18,7 @@ router.post('/tenants', tenantController.registerTenant);
 router.post('/tenants/:tenantId/onboard', tenantController.onboardTenant);
 
 // Auth
-router.post('/auth/login', authController.login);
+router.post('/auth/signup', authController.login);
 
 // Auth Middleware
 router.use('/users', authMiddleware);

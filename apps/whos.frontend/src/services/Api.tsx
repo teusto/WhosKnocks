@@ -44,3 +44,8 @@ export const verifyProof = async (proof: object, publicSignals: string[]): Promi
     const response = await api.post("/api/users/verify-proof", { proof, publicSignals });
     return response.data;
 }
+
+export const loginUser = async (email: string, password: string): Promise<UserInfo> => {
+  const response = await api.post(`/auth/login`, { email, password });
+  return response.data;
+};
