@@ -19,6 +19,9 @@ const DashboardPage: React.FC = () => {
         <div>
             billing
         </div>
+        <div>
+            Activity
+        </div>
     </PageFrame>
   );
 };
