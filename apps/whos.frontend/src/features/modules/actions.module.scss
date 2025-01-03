@@ -1,0 +1,15 @@
+.wrapper{
+    border: 2px solid red;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .btn{
+        border: 1px solid rgb(61, 61, 61);
+        padding: .25rem 2.5rem;
+        margin: .15rem;
+        border-radius: 4px;
+        width: 49%;
+        text-align: center;
+        cursor: pointer;
+    }
+}

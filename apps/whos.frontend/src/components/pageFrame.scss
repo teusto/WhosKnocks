@@ -1,9 +1,9 @@
 // PageLayout.scss
 .page-frame {
-    min-height: 100vh;
+    height: 100vh;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    padding: .55rem;
     
     &__main {
       flex: 1;
@@ -39,4 +39,14 @@
         max-width: none;
       }
     }
+  }
+
+  .grid-template {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    justify-content: center;
+    justify-items: stretch;
+    white-space: nowrap;
+    row-gap: .25rem;
+    column-gap: .25rem;
   }

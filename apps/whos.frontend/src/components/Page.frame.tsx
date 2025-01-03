@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import "./pageFrame.scss";
+import SideBar from "./Sidebar";
 
 interface PageFrameProps {
   children: ReactNode;
@@ -12,14 +13,15 @@ const PageFrame: React.FC<PageFrameProps> = ({
   children,
   className = "",
   maxWidth = "lg",
-  padding = true,
+  padding = false,
 }) => {
   return (
-    <div className={`page-frame ${className}`}>
+    <div className={`page-frame`}>
+      <SideBar />
       <main
         className={`page-frame__main ${maxWidth} ${
           padding ? "with-padding" : ""
-        }`}
+        } ${className}`}
       >
         {children}
       </main>
