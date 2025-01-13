@@ -1,0 +1,98 @@
+.wrapper {
+    //border: 2px solid red;
+    width: 100vw;
+    background-color: #0B132B;
+    .header{
+        display: flex;
+        //border: 2px solid red;
+        border-top: 2px solid #1C2541;
+        border-bottom: 2px solid #1C2541;
+        .left {
+            display: flex;
+            justify-content: left;
+            flex: 5;
+            padding: 0 1rem;
+            .container_logo{
+                .logo{
+                    font-weight: 800;
+                }
+            }
+        }
+    
+        .right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 2px solid #1C2541;
+            flex: 1;
+        }
+    }
+    .main_frame{
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        //border: 2px solid red;
+        .top{
+            .title{
+                font-size: 50px;
+                color: #EEF1EF;
+                margin: 0;
+            }
+        }
+        .bottom{
+            .title{
+                font-size: 50px;
+                text-align: right;
+                color: #EEF1EF;
+                margin: 0
+            }
+            .text{
+                text-align: center;
+                color: #F72585;
+                font-weight: 600;
+            }
+        }
+
+        .card{
+            background-color: #6FFFE925;
+            filter: blur(4);
+            border-radius: 20px;
+            padding: .5rem;
+            .container{
+                border: 1px solid #F72585;
+                border-radius: 20px;
+                padding: .5rem;
+                .container_logo{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .container_text{
+                    text-align: left;
+                    p:first-of-type{
+                        font-weight: 600;
+                    }
+                }
+                .container_qr{
+                    display: flex;
+                    align-items: flex-end;
+                    //border: 2px solid red;
+                    justify-content: space-between;
+                    .qr{
+                        width: 25%;
+                        aspect-ratio: 1/1;
+                        border: 1px solid white;
+                    }
+                    .hash{
+                        filter: blur(1);
+                        //border: 2px solid red;
+                        p{
+                            margin: 0;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

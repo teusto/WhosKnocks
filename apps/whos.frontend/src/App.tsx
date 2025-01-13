@@ -15,6 +15,7 @@ import { WagmiProvider } from "wagmi";
 import { mainnet, polygon, optimism, arbitrum, base } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import DashboardPage from "./pages/Dashboard";
+import LandingPage from "./pages/Landing";
 
 const config = getDefaultConfig({
   appName: "WhosKnocksFrontend",
@@ -31,7 +32,7 @@ const App: React.FC = () => (
       <RainbowKitProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/profile/:userAddress" element={<ProfilePage />} />
             <Route path="/verify" element={<AccessVerificationPage />} />
